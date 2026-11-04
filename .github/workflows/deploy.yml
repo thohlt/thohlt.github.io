@@ -13,6 +13,6 @@ jobs:
         with:
           lfs: true
       - name: Build and deploy
-        uses: shalzz/zola-deploy-action@v0.22.1
+        uses: shalzz/zola-deploy-action@v0.23.6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

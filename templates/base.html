@@ -16,10 +16,9 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path='rss.xml') }}">
     {% set css = load_data(path="style.css") %}
     <style>{{ css | safe }}</style>
-    {% set current_title = page.title | default(value=section.title | default(value="Thilo Hohlt")) %}
-    <title>{{ current_title }}{% if current_title != "Thilo Hohlt" %} - Thilo Hohlt{% endif %}</title>
+    <title>{% block title %}{% set current_title = page?.title or section?.title or "Thilo Hohlt" %}{{ current_title }}{% if current_title != "Thilo Hohlt" %} - Thilo Hohlt{% endif %}{% endblock title %}</title>
     <meta name="description"
-        content="{% block description %}{{ page.description | default(value=section.description | default(value='')) }}{% endblock description %}">
+        content="{% block description %}{{ page?.description or section?.description or "" }}{% endblock description %}">
 </head>
 
 <body>
@@ -74,10 +73,9 @@
     </nav>
     <header>
         <div class="container">
-            <h1>{% block header %}{{ page.title | default(value=section.title | default(value="")) }}{% endblock header
-                %}</h1>
-            {% if page.date %}
-            <time datetime="{{ page.date | date(format='%+') }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+            <h1>{% block header %}{{ page?.title or section?.title or "" }}{% endblock header %}</h1>
+            {% if page?.date %}
+            <time datetime="{{ page.date | date(format='%Y-%m-%dT%H:%M:%S%:z') }}">{{ page.date | date(format="%B %d, %Y") }}</time>
             {% endif %}
         </div>
     </header>
