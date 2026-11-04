@@ -3,7 +3,7 @@
 {% block content %}
 {% for page in paginator.pages %}
 <article class="blog-post">
-    <time datetime="{{ page.date | date(format='%+') }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+    <time datetime="{{ page.date | date(format='%Y-%m-%dT%H:%M:%S%:z') }}">{{ page.date | date(format="%B %d, %Y") }}</time>
     <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
     <p>{{ page.description }}</p>
 </article>
