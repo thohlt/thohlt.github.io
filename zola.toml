@@ -1,4 +1,6 @@
 base_url = "https://thilohohlt.com"
+title = "Thilo Hohlt"
+description = "Thilo Hohlt - Software developer from Germany."
 compile_sass = true
 build_search_index = true
 generate_feeds = true
